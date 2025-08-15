@@ -1,10 +1,26 @@
 /* Fuentes personalizadas */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Altero&display=swap');
 
+@font-face {
+    font-family: 'Sports World';
+    src: url('fonts/sportsworld.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aileron';
+    src: url('fonts/aileron.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --primary: #e74c3c;
     --secondary: #f39c12;
-    --dark: #2c3e50;
+    --dark: #160101;
     --light: #ecf0f1;
     --black: #1a1a1a;
     --orange-gradient: linear-gradient(135deg, #f39c12, #e74c3c);
@@ -15,6 +31,40 @@ body {
     color: var(--black);
     padding-top: 56px;
     overflow-x: hidden;
+}
+
+/* Títulos principales */
+h1, h2, h3, h4, h5, h6,
+.section-title h2,
+.promo-front h3,
+.promo-front h4,
+#modalItemTitle {
+    font-family: 'Sports World', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Eliminar bordes redondeados en todos los elementos */
+.navbar-brand img,
+.hero-carousel,
+.carousel-item img,
+.menu-item,
+.accordion-button,
+.modal-content,
+.promo-card,
+.promo-front,
+.promo-back,
+.map-container,
+.map-container iframe,
+.btn,
+.btn-reserva,
+.btn-primary,
+.btn-danger,
+.btn-secondary,
+.btn-link,
+.card,
+.modal-content,
+.offcanvas {
+    border-radius: 0 !important;
 }
 
 /* Navbar */
@@ -29,13 +79,13 @@ body {
 }
 
 .navbar-brand img:hover {
-    transform: scale(1.05);
+    transform: scale(.05);
 }
 
 .nav-link {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.2rem;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     margin: 0 0.5rem;
     position: relative;
 }
@@ -112,10 +162,7 @@ body {
 }
 
 .hero-text h1 {
-    font-family: 'Bebas Neue', sans-serif;
     font-size: 4rem;
-    letter-spacing: 3px;
-    margin-bottom: 0.5rem;
 }
 
 .hero-text .lead {
@@ -171,8 +218,8 @@ body {
 .section-title h2 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.5rem;
-    letter-spacing: 2px;
-    color: var(--dark);
+    letter-spacing: 7px;
+    color: var(--light);
     display: inline-block;
     padding: 0 2rem;
     position: relative;
@@ -204,7 +251,10 @@ body {
     background-color: var(--light);
     color: var(--dark);
 }
-
+.dark-bg {
+    background-color: var(--black);
+    color: white;
+}
 .accordion-button:not(.collapsed) {
     background-color: var(--primary);
     color: white;
