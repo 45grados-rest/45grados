@@ -3,26 +3,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuModal = document.getElementById('menuModal');
     if (menuModal) {
         menuModal.addEventListener('show.bs.modal', function(event) {
-            const button = event.relatedTarget; // Botón que activó el modal
-            const imgSrc = button.getAttribute('data-img');
-            const imgPath = (imgSrc.startsWith('img/') || imgSrc.startsWith('img/photos/')) ? imgSrc : `img/photos/${imgSrc}`;
+            const button = event.relatedTarget;
+            const imgSrc = button.getAttribute('data-img'); // Ej: "45 Grados_10.jpg"
             const title = button.getAttribute('data-title');
             const desc = button.getAttribute('data-desc');
             
-            // Actualizar contenido del modal
+            // Construir ruta segura
+            const imgPath = `img/photos/${imgSrc}`;
+            //let imgPath;
+            //if (imgSrc.startsWith('img/') || imgSrc.startsWith('/img/')) {
+            //    imgPath = imgSrc;
+            //} else {
+            //    imgPath = `img/photos/${imgSrc}`;
+            //}
+
+            // Opcional: codificar URI para manejar espacios y caracteres especiales
+            const encodedImgPath = encodeURI(imgPath);
+
+            // Actualizar imagen del modal
+            //modalImage.src = encodedImgPath;
+
+            // Actualizar contenido
             const modalTitle = menuModal.querySelector('#modalItemTitle');
             const modalDesc = menuModal.querySelector('#modalItemDesc');
-            
             modalTitle.textContent = title;
             modalDesc.textContent = desc;
-            
-            // Configurar carrusel (en este caso solo una imagen)
+
+            // Actualizar carrusel
             const carouselInner = menuModal.querySelector('.carousel-inner');
             carouselInner.innerHTML = `
                 <div class="carousel-item active">
-                    <img src="${imgPath}" class="d-block w-100" alt="${title}">
+                    <img src="${encodedImgPath}" class="d-block w-100" alt="${title}" onerror="this.onerror=null; this.src='img/photos/placeholder.jpg';">
                 </div>
             `;
+
+            // Reiniciar carrusel para que detecte el nuevo contenido
+            const carouselElement = menuModal.querySelector('.carousel');
+            const carouselInstance = bootstrap.Carousel.getInstance(carouselElement);
+            if (carouselInstance) {
+                carouselInstance.dispose();
+            }
+            new bootstrap.Carousel(carouselElement);
         });
     }
     
