@@ -38,10 +38,19 @@ h1, h2, h3, h4, h5, h6,
 .section-title h2,
 .promo-front h3,
 .promo-front h4,
+.promo-card .promo-front h3,
 #modalItemTitle {
     font-family: 'Sports World', serif;
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+
+.promo-back p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    color: var(--light);
 }
 
 /* Eliminar bordes redondeados en todos los elementos */
