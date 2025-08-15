@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         menuModal.addEventListener('show.bs.modal', function(event) {
             const button = event.relatedTarget; // Botón que activó el modal
             const imgSrc = button.getAttribute('data-img');
+            const imgPath = (imgSrc.startsWith('img/') || imgSrc.startsWith('img/photos/')) ? imgSrc : `img/photos/${imgSrc}`;
             const title = button.getAttribute('data-title');
             const desc = button.getAttribute('data-desc');
             
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const carouselInner = menuModal.querySelector('.carousel-inner');
             carouselInner.innerHTML = `
                 <div class="carousel-item active">
-                    <img src="${imgSrc}" class="d-block w-100" alt="${title}">
+                    <img src="${imgPath}" class="d-block w-100" alt="${title}">
                 </div>
             `;
         });
